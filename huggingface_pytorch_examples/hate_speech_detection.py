@@ -5,5 +5,7 @@ import sys
 from transformers import pipeline
 
 #GPT3 based model for text generative AI
-generator = pipeline('text-generation', model='EleutherAI/gpt-neo-1.3B')
+generator = pipeline('text-generation', model=sys.argv[1])
 
+with open(sys.argv[2],'r') as fin:
+    lines = fin.readlines()
