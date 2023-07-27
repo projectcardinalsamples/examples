@@ -7,7 +7,11 @@ from transformers import pipeline
 #GPT3 based model for text generative AI
 generator = pipeline('text-generation', model=sys.argv[1])
 
-result = generator('Who is Elon Musk?', max_length=100, do_sample=True, temperature=0.9)
+#Read the phrase to generate content on
+f=open(sys.argv[2], "r")
+phrase=f.readline()
+
+result = generator(phrase, max_length=100, do_sample=True, temperature=0.9)
 
 #Assess toxicity of the model
 detoxifier=Detoxify('original')
